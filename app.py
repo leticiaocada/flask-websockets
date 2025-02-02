@@ -58,6 +58,10 @@ def pix_confirmation():
 @app.route('/payments/pix/<payment_id>', methods=['GET'])
 def payment_pix_paid(payment_id):
     payment = Payment.query.get(payment_id)
+    print(payment)
+
+    if not payment:
+        return render_template('404.html')
 
     if payment.paid == True:
         return render_template('confirmed_payment.html',
@@ -73,6 +77,10 @@ def payment_pix_paid(payment_id):
 @socketio.on('connect')
 def handle_connect():
     print("Client connected to the server")
+
+@socketio.on('disconnect')
+def handle_disconnect():
+    print("Client has been disconnected")
 
 if __name__ == "__main__":
     socketio.run(app, debug=True)

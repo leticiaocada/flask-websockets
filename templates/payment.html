@@ -33,7 +33,7 @@
             <img src="{{ url_for('static', filename='template_img/tag.svg') }}" alt="Ícone de tag" />
             <span>Compra de R$ <strong id="amount">{{value}}</strong></span>
           </div>
-        </aside>
+        </aside> 
       </header>
 
       <footer>
@@ -65,7 +65,7 @@
       socket.on('connect', function(){
         console.log("Websocket connected");
       })
-      socket.on('payment-confirmed-{{payment.id}}', function() {
+      socket.on('payment-confirmed-{{payment_id}}', function() {
         console.log("Payment confirmed");
         location.reload();
       })
